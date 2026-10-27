@@ -1,0 +1,24 @@
+App name: Nibras Note
+Category: Tools / Productivity (Notes)
+Short description (80):
+Paper notebooks on your phone — lined, grid, dotted. Private and offline.
+
+Full description:
+Nibras Note turns your phone into a set of paper notebooks.
+
+• Notebooks with covers on a shelf, sortable by date, shape or name
+• Paper styles: lined, narrow / wide ruled, grid, dotted, blank, Cornell, list, journal, planner, two columns, margin
+• Paper colours: cream, ivory, white, lemon, peach, pink, lavender, blue, mint, kraft, night
+• Write text or draw with pen, pencil, fountain pen, brush, gel, fineliner and marker; eraser, lines, shapes, stars, arrows, check marks, images
+• Multiple pages per notebook, undo/redo, zoom, reading mode
+• Export a notebook to PDF; save and restore all notebooks with a backup file
+• Interface in Azerbaijani, Turkish, English, Russian and Arabic
+
+Privacy: your notes are stored only on your device. No account, no ads, no analytics, no tracking. The app does not use the internet.
+
+Privacy policy: https://nibrascode.com/privacy/nibras-note
+Contact: nibrascode@gmail.com
+Developer: Nibras Code
+Version: 1.0.0 (versionCode 1)
+Age rating: 3+ / Everyone
+Permissions: none
