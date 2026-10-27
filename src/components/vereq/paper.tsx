@@ -604,7 +604,13 @@ export function Paper({
               <Star className="star" size={18} strokeWidth={2.4} aria-hidden="true" />
               <div>
                 <p className="eyebrow">{text(lang, "journal")}</p>
-                <p className="mast-date">{page.dateLabel}</p>
+                <input
+                  className="mast-date"
+                  value={page.dateLabel}
+                  aria-label="date"
+                  style={{ background: "transparent", border: 0, outline: "none", font: "inherit", color: "inherit", padding: 0, width: "100%" }}
+                  onChange={(event) => onChange({ dateLabel: event.target.value })}
+                />
               </div>
             </header>
             <Ruled

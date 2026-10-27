@@ -70,6 +70,20 @@ function touch(notebooks: Notebook[], id: string, map: (n: Notebook) => Notebook
   return notebooks.map((n) => (n.id === id ? map({ ...n, updatedAt: Date.now() }) : n));
 }
 
+const DEMO_IDS = new Set(seedNotebooks().map((n) => n.id));
+const DEMO_STAMP = new Map(seedNotebooks().map((n) => [n.id, n.updatedAt]));
+const DEMO_PAGES = new Set(seedNotebooks().flatMap((n) => n.pages.map((p) => p.id)));
+
+/** Remove untouched demo notebooks and demo date labels left from 1.0.0/1.0.1. */
+function stripDemo(list: Notebook[]): Notebook[] {
+  return list
+    .filter((n) => !(DEMO_IDS.has(n.id) && DEMO_STAMP.get(n.id) === n.updatedAt))
+    .map((n) => ({
+      ...n,
+      pages: n.pages.map((p) => (DEMO_PAGES.has(p.id) ? { ...p, dateLabel: "" } : p)),
+    }));
+}
+
 function revive(raw: Notebook): Notebook {
   const pages = (raw.pages ?? []).map((p) => ({
     ...p,
@@ -97,7 +111,7 @@ function revive(raw: Notebook): Notebook {
 export const useBook = create<State>()(
   persist(
     (set) => ({
-      notebooks: seedNotebooks(),
+      notebooks: [],
       openId: null,
       tool: "text",
       ink: "ink",
@@ -302,7 +316,7 @@ export const useBook = create<State>()(
         const paper = defaults && PAPERS.some((item) => item.id === defaults.paper) ? defaults.paper : current.defaults.paper;
         return {
           ...current,
-          notebooks: saved.notebooks.map((notebook) => revive(notebook as Notebook)),
+          notebooks: stripDemo(saved.notebooks.map((notebook) => revive(notebook as Notebook))),
           ink: saved.ink ?? current.ink,
           tool: saved.tool ?? current.tool,
           penWidth: width === 1 || width === 2 || width === 3 ? width : current.penWidth,
